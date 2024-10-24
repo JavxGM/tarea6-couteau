@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Noticias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <ion-button expand="full" (click)="getNews()">Cargar Noticias</ion-button>
+
+  
+  <p *ngIf="errorMessage" style="color: red; text-align: center;">{{ errorMessage }}</p>
+
+  
+  <div *ngIf="news.length > 0">
+    <div *ngFor="let item of news" style="padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
+      <h2 [innerHTML]="item.title.rendered"></h2>
+      <p [innerHTML]="item.excerpt.rendered"></p>
+      <a [href]="item.link" target="_blank">Leer más</a>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Universidades</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Enter Country:</ion-label>
+    <ion-input [(ngModel)]="country" placeholder="Type a country"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="getUniversities()">Buscar Universidades</ion-button>
+
+  <!-- Mostrar errores -->
+  <p *ngIf="errorMessage" style="color: red; text-align: center; margin-top: 10px;">{{ errorMessage }}</p>
+
+  <!-- Mostrar universidades -->
+  <div *ngIf="universities.length > 0 && !errorMessage" style="margin-top: 20px;">
+    <div *ngFor="let uni of universities" style="padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;">
+      <h2>{{ uni.name }}</h2>
+      <p><strong>Dominio:</strong> {{ uni.domains[0] }}</p>
+      <a [href]="'http://' + uni.web_pages[0]" target="_blank">Visitar Página Web</a>
+    </div>
+  </div>
+</ion-content>

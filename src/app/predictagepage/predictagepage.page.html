@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Predecir Edad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Enter Name:</ion-label>
+    <ion-input [(ngModel)]="name" placeholder="Type a name"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="predictAge()">Predecir Edad</ion-button>
+
+  
+  <p *ngIf="errorMessage" style="color: red; text-align: center; margin-top: 10px;">{{ errorMessage }}</p>
+
+  
+  <div *ngIf="age !== null && !errorMessage" style="text-align: center; margin-top: 20px;">
+    <img [src]="ageImage" alt="{{ ageGroup }}" style="width: 100px; height: 100px;">
+    <h2>{{ ageGroup }}</h2>
+    <p>La edad estimada es: {{ age }}</p>
+  </div>
+</ion-content>

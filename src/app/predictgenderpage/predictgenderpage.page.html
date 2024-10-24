@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Predecir Genero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngStyle]="{'background-color': backgroundColor}">
+  <ion-item>
+    <ion-label position="stacked">Ingresa el nombre:</ion-label>
+    <ion-input [(ngModel)]="name" placeholder="Ingresa el nombre"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="predictGender()">Predecir Genero</ion-button>
+
+  <div *ngIf="gender" style="text-align: center; margin-top: 20px;">
+    <div 
+      class="circle"
+      [ngStyle]="{'background-color': backgroundColor}">
+    </div>
+    <h2>El genero predecido es: {{ gender }}</h2>
+  </div>
+</ion-content>
