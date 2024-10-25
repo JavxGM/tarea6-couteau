@@ -32,8 +32,12 @@ export class PredictAgePage {
   constructor(private http: HttpClient) {}
 
   predictAge() {
+    // Verificar si el nombre está vacío
     if (!this.name.trim()) {
       this.errorMessage = 'Por favor, ingresa un nombre.';
+      this.age = null;
+      this.ageGroup = '';
+      this.ageImage = '';
       return;
     }
 
@@ -41,8 +45,11 @@ export class PredictAgePage {
 
     this.http.get(url).subscribe(
       (response: any) => {
-        this.age = response.age;
+        // Resetear el mensaje de error
         this.errorMessage = '';
+
+        // Obtener la edad de la respuesta
+        this.age = response.age;
 
         if (this.age !== null) {
           if (this.age < 18) {
@@ -61,8 +68,14 @@ export class PredictAgePage {
         }
       },
       error => {
+        // Manejar el error de conexión
         this.errorMessage = 'Error al conectar con la API.';
         console.error('Error al conectar con la API:', error);
+
+        // Resetear los valores si hay un error
+        this.age = null;
+        this.ageGroup = '';
+        this.ageImage = '';
       }
     );
   }
